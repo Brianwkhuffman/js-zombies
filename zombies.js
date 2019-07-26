@@ -92,7 +92,6 @@ function Player(name, health, strength, speed) {
   var maxHealth = health;
   this.isAlive = true;
   this.equipped = false;
-  this.weaponName = null;
 
   this.getMaxHealth = function() {
     return maxHealth;
@@ -133,7 +132,6 @@ function Player(name, health, strength, speed) {
         }
         pack.splice(itemIndex, 1);
         this.equipped = itemToEquip;
-        // this.weaponName = itemToEquip;
       }
     }
   };
@@ -159,12 +157,10 @@ function Player(name, health, strength, speed) {
     }
   };
   this.equippedWith = function() {
-    console.log("testing-----");
-    if (this.equipped === false) {
-      console.log("git gud.");
-      return false;
+    if (this.equipped !== false) {
+      return this.equipped.name;
     } else {
-      console.log("Player: " + this.name + " is using " + this.equipped);
+      return false;
     }
   };
 }
