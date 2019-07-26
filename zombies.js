@@ -104,7 +104,7 @@ function Player(name, health, strength, speed) {
     return pack;
   };
   this.takeItem = function(item) {
-    if (pack.length >= 3) {
+    if (this.getPack().length >= 3) {
       console.log("Inventory full");
       return false;
     } else {
@@ -133,7 +133,7 @@ function Player(name, health, strength, speed) {
         }
         pack.splice(itemIndex, 1);
         this.equipped = itemToEquip;
-        this.weaponName = itemToEquip;
+        // this.weaponName = itemToEquip;
       }
     }
   };
@@ -164,7 +164,7 @@ function Player(name, health, strength, speed) {
       console.log("git gud.");
       return false;
     } else {
-      console.log(this.equipped.name);
+      console.log("Player: " + this.name + " is using " + this.equipped);
     }
   };
 }
