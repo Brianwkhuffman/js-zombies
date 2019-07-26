@@ -159,28 +159,24 @@ class Player {
   }
   equip(itemToEquip) {
     let itemIndex = this.getPack().indexOf(itemToEquip);
-    if (itemToEquip instanceof Weapon === true) {
-      if (itemIndex !== -1) {
-        if (this._equipped !== false) {
-          this._pack.push(this._equipped);
-        }
-        this.getPack().splice(itemIndex, 1);
-        this._equipped = itemToEquip;
+    if (itemToEquip instanceof Weapon === true && itemIndex !== -1) {
+      if (this._equipped !== false) {
+        this._pack.push(this._equipped);
       }
+      this.getPack().splice(itemIndex, 1);
+      this._equipped = itemToEquip;
     }
   }
   eat(itemToEat) {
     let itemIndex = this.getPack().indexOf(itemToEat);
     let restore = itemToEat.energy;
     let health = this._health;
-    if (itemToEat instanceof Food) {
-      if (itemIndex !== -1) {
-        this.getPack().splice(itemIndex, 1);
-        if (restore + health >= this._maxHealth) {
-          this._health = this._maxHealth;
-        } else {
-          this._health = restore + health;
-        }
+    if (itemToEat instanceof Food && itemIndex !== -1) {
+      this.getPack().splice(itemIndex, 1);
+      if (restore + health >= this._maxHealth) {
+        this._health = this._maxHealth;
+      } else {
+        this._health = restore + health;
       }
     }
   }
