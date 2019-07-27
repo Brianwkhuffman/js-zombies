@@ -103,18 +103,18 @@ function Player(name, health, strength, speed) {
     return pack;
   };
   this.takeItem = function(item) {
-    if (this.getPack().length >= 3) {
-      console.log("Inventory full");
+    if (pack.length >= 3) {
+      console.log("Pack is full");
       return false;
     } else {
       pack.push(item);
-      console.log(this.name + " got " + item + ".");
+      console.log(this.name + " pickup " + item.name);
       return true;
     }
   };
   this.discardItem = function(item) {
     let itemIndex = pack.indexOf(item);
-    if (itemIndex) {
+    if (itemIndex >= 0) {
       pack.splice(itemIndex, 1);
       console.log("Player: " + name + " discarded " + item + ".");
       return true;
@@ -136,16 +136,19 @@ function Player(name, health, strength, speed) {
     }
   };
   this.eat = function(itemToEat) {
-    let itemIndex = pack.indexOf(itemToEat);
-    let restore = itemToEat.energy;
     if (itemToEat instanceof Food) {
-      if (itemIndex !== -1) {
-        this.discardItem(itemIndex);
-        this.health += restore;
+      if (pack.indexOf(itemToEat) >= 0) {
+        if (this.health + itemToEat.energy > 100) {
+          this.health = this.getMaxHealth();
+        } else {
+          this.health += itemToEat.energy;
+        }
+        pack.splice(pack.indexOf(itemToEat), 1);
+      } else {
+        console.log("This item is not in your pack");
       }
-      if (this.health >= maxHealth) {
-        this.health = maxHealth;
-      }
+    } else {
+      console.log("This item cannot be eaten");
     }
   };
   this.useItem = function(item) {
@@ -164,13 +167,6 @@ function Player(name, health, strength, speed) {
     }
   };
 }
-// Player.prototype.equippedWith = function() {
-//   if (this.equipped === false) {
-//     return false;
-//   } else {
-//     return console.log(this.name + this.equipped.name);
-//   }
-// };
 /**
  * Player Class Method => checkPack()
  * -----------------------------
