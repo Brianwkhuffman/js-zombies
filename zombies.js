@@ -109,23 +109,38 @@ class Player {
   get name() {
     return this._name;
   }
+  set name (newName){
+    this._name = newName
+  }
   get health() {
     return this._health;
+  }
+  set health(newHealth) {
+    this._health = newHealth;
   }
   get strength() {
     return this._strength;
   }
+  set. strength (newStrength){
+    this._strength = newStrength
+  }
   get speed() {
     return this._speed;
+  }
+  set speed (newSpeed){
+    this._speed = newSpeed
   }
   get isAlive() {
     return this._isAlive;
   }
+  set isAlive(status){
+    this._isAlive = status
+  }
   get equipped() {
     return this._equipped;
   }
-  set health(newHealth) {
-    this._health = newHealth;
+  set equipped(equipWeap){
+    this._equipped = equipWeap;
   }
   getPack() {
     return this._pack;
