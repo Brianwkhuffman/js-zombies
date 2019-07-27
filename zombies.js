@@ -14,6 +14,9 @@ class Item {
   get name() {
     return this._name;
   }
+  set name(newName) {
+    this._name = newName;
+  }
 }
 
 /**
@@ -44,6 +47,9 @@ class Weapon extends Item {
   get damage() {
     return this._damage;
   }
+  set damage(newDmg) {
+    this._damage = newDmg;
+  }
 }
 /**
  * Class => Food(name, energy)
@@ -72,6 +78,9 @@ class Food extends Item {
   }
   get energy() {
     return this._energy;
+  }
+  set energy(newEnergy) {
+    this._energy = newEnergy;
   }
 }
 /**
@@ -369,11 +378,20 @@ class Zombie {
   get strength() {
     return this._strength;
   }
+  set strength(newStr) {
+    this._str = newStr;
+  }
   get speed() {
     return this._speed;
   }
+  set speed(newSpeed) {
+    this._speed = newSpeed;
+  }
   get isAlive() {
     return this._isAlive;
+  }
+  set isAlive(status) {
+    this._isAlive = status;
   }
 }
 /**
@@ -476,34 +494,34 @@ class ExplodingZombie extends Zombie {
  * Sample run.
  * Feel free to edit this and check your game logic.
  */
-function runGame() {
-  var player = new Player("Joan", 500, 30, 70);
-  var zombie = new Zombie(40, 50, 20);
-  var charger = new FastZombie(175, 25, 60);
-  var tank = new StrongZombie(250, 100, 15);
-  var spitter = new RangedZombie(150, 20, 20);
-  var boomer = new ExplodingZombie(50, 15, 10);
-  var shovel = new Weapon("shovel", 15);
-  var sandwich = new Food("sandwich", 30);
-  var chainsaw = new Weapon("chainsaw", 25);
-  player.takeItem(shovel);
-  player.takeItem(sandwich);
-  player.takeItem(chainsaw);
-  player.discardItem(new Weapon("scythe", 21));
-  player.discardItem(shovel);
-  player.checkPack();
-  player.takeItem(shovel);
-  player.checkPack();
-  player.equippedWith();
-  player.useItem(chainsaw);
-  player.equippedWith();
-  player.checkPack();
-  player.useItem(shovel);
-  player.equippedWith();
-  player.checkPack();
-  player.health = 487;
-  console.log("Before health: " + player.health);
-  player.useItem(sandwich);
-  console.log("After health: " + player.health);
-  player.checkPack();
-}
+// function runGame() {
+//   var player = new Player("Joan", 500, 30, 70);
+//   var zombie = new Zombie(40, 50, 20);
+//   var charger = new FastZombie(175, 25, 60);
+//   var tank = new StrongZombie(250, 100, 15);
+//   var spitter = new RangedZombie(150, 20, 20);
+//   var boomer = new ExplodingZombie(50, 15, 10);
+//   var shovel = new Weapon("shovel", 15);
+//   var sandwich = new Food("sandwich", 30);
+//   var chainsaw = new Weapon("chainsaw", 25);
+//   player.takeItem(shovel);
+//   player.takeItem(sandwich);
+//   player.takeItem(chainsaw);
+//   player.discardItem(new Weapon("scythe", 21));
+//   player.discardItem(shovel);
+//   player.checkPack();
+//   player.takeItem(shovel);
+//   player.checkPack();
+//   player.equippedWith();
+//   player.useItem(chainsaw);
+//   player.equippedWith();
+//   player.checkPack();
+//   player.useItem(shovel);
+//   player.equippedWith();
+//   player.checkPack();
+//   player.health = 487;
+//   console.log("Before health: " + player.health);
+//   player.useItem(sandwich);
+//   console.log("After health: " + player.health);
+//   player.checkPack();
+// }
