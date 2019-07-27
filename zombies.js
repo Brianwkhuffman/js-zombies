@@ -301,7 +301,7 @@ function Zombie(health, strength, speed) {
   this.strength = strength;
   this.speed = speed;
   this.isAlive = true;
-  var maxHealth = health;
+  const maxHealth = health;
 }
 /**
  * Class => FastZombie(health, strength, speed)
