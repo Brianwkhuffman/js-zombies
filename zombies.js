@@ -112,7 +112,7 @@ function Player(name, health, strength, speed) {
  * @name checkPack
  */
 Player.prototype.checkPack = function() {
-  return console.log(this.getPack());
+  return console.log("Player: " + this.name + "\nInventory: " + this.getPack());
 };
 /**
  * Player Class Method => takeItem(item)
@@ -168,7 +168,6 @@ Player.prototype.takeItem = function(item) {
  */
 Player.prototype.discardItem = function(item) {
   let itemIndex = this.getPack().indexOf(item);
-  console.log("test-----" + itemIndex);
   if (itemIndex >= 0) {
     this.getPack().splice(itemIndex, 1);
     console.log("Player: " + this.name + " discarded " + item.name);
